@@ -1,3 +1,5 @@
 dictionary.cpp
 dictionary.h
 *.o
+./.vscode
+.vscode
