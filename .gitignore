@@ -3,3 +3,5 @@ dictionary.h
 *.o
 ./.vscode
 .vscode
+client
+server
