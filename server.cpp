@@ -31,11 +31,11 @@ int main(int argc, char *argv[])
     initTestDictionary();
     int status = 0;
     Ice::CommunicatorPtr ic;
-
+    Ice::ObjectAdapterPtr adapter;
     try
     {
         ic = Ice::initialize(argc, argv);
-        Ice::ObjectAdapterPtr adapter = ic->createObjectAdapterWithEndpoints(
+        adapter = ic->createObjectAdapterWithEndpoints(
             "MyAdapter", "default -p 10000");
         Ice::ObjectPtr object = new TranslatorImpl;
         adapter->add(object, Ice::stringToIdentity("MyIceServiceName"));
@@ -47,11 +47,12 @@ int main(int argc, char *argv[])
         cerr << e << endl;
         status = 1;
     }
-    catch (const char *msg)
-    {
-        cerr << msg << endl;
-        status = 1;
-    }
+
+    if(adapter)
+        adapter->destroy();
+    if(ic)
+        ic->destroy();
+    
 
     return status;
 }
