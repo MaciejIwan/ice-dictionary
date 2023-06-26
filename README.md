@@ -20,5 +20,4 @@ make clean
 ```
 ## Check makefile to find more commands
 
-
-# dictorionary server know only hej word in polish, and translate it to english
+# the dictionary server only knows the word "hej" in Polish and will translate it into English. Throws an exception in other cases
