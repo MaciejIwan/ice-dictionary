@@ -2,7 +2,7 @@
 #include <dictionary.h>
 
 using namespace std;
-using namespace Task1; // mapped from ICE module name
+using namespace DictonaryIceModule; // mapped from ICE module name
 
 int main(int argc, char *argv[])
 {

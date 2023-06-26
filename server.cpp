@@ -2,17 +2,17 @@
 #include <dictionary.h>
 
 using namespace std;
-using namespace Task1;
+using namespace DictonaryIceModule;
 
 myDictionary dictionary;
 
-class TranslatorI : public Translator
+class TranslatorImpl : public Translator
 {
 public:
     virtual words translate(const string &s, const Ice::Current &);
 };
 
-words TranslatorI::translate(const string &s, const Ice::Current &)
+words TranslatorImpl::translate(const string &s, const Ice::Current &)
 {
     words response = dictionary[s];
     if(response.size() == 0)
@@ -36,8 +36,8 @@ int main(int argc, char *argv[])
     {
         ic = Ice::initialize(argc, argv);
         Ice::ObjectAdapterPtr adapter = ic->createObjectAdapterWithEndpoints(
-            "SimplePrinterAdapter", "default -p 10000");
-        Ice::ObjectPtr object = new TranslatorI;
+            "MyAdapter", "default -p 10000");
+        Ice::ObjectPtr object = new TranslatorImpl;
         adapter->add(object, Ice::stringToIdentity("MyIceServiceName"));
         adapter->activate();
         ic->waitForShutdown();

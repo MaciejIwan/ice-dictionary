@@ -1,4 +1,4 @@
-module Task1 {
+module DictonaryIceModule {
     exception NoSuchWordException {};
 
     sequence<string> words;
