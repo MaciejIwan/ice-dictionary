@@ -2,7 +2,7 @@
 #include <dictionary.h>
 
 using namespace std;
-using namespace Task1;
+using namespace Task1; // mapped from ICE module name
 
 int main(int argc, char *argv[])
 {
@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     try
     {
         ic = Ice::initialize(argc, argv);
-        Ice::ObjectPrx base = ic->stringToProxy("SimplePrinter:default -p 10000");
+        Ice::ObjectPrx base = ic->stringToProxy("MyIceServiceName:default -p 10000");
         TranslatorPrx trans = TranslatorPrx::checkedCast(base);
         if (!trans)
             throw "invalid proxy";

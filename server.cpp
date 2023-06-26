@@ -20,7 +20,7 @@ words TranslatorI::translate(const string &s, const Ice::Current &)
     return response;
 }
 
-void test_data(){
+void initTestDictionary(){
     words someTranslations;
     someTranslations.push_back("hello");
     someTranslations.push_back("hi");
@@ -28,7 +28,7 @@ void test_data(){
 }
 int main(int argc, char *argv[])
 {
-    test_data();
+    initTestDictionary();
     int status = 0;
     Ice::CommunicatorPtr ic;
 
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
         Ice::ObjectAdapterPtr adapter = ic->createObjectAdapterWithEndpoints(
             "SimplePrinterAdapter", "default -p 10000");
         Ice::ObjectPtr object = new TranslatorI;
-        adapter->add(object, Ice::stringToIdentity("SimplePrinter"));
+        adapter->add(object, Ice::stringToIdentity("MyIceServiceName"));
         adapter->activate();
         ic->waitForShutdown();
     }
