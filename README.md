@@ -1,17 +1,21 @@
 # ice-dictionary
 ## To build all needed things
 ```bash
-make all```
+make all
+```
 
 ## to run server
 ```bash
-./server```
+./server
+```
 
 ## to run client
 ```bash
-./client```
+./client
+```
 
 ## to clean project files
 ```bash
-make clean```
+make clean
+```
 ## Check makefile to find more commands
